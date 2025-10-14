@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tools | AIPromptsByDB</title>
+
+  <!-- ✅ CSS -->
+  <link rel="stylesheet" href="CSS/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+  <!-- Navbar Placeholder -->
+  <div id="header"></div>
+
+  <!-- 🌐 Tools Section -->
+  <section class="tools-section">
+    <div class="container">
+      <h1 class="section-title"><i class="fa-solid fa-screwdriver-wrench"></i> AI Tools & Utilities</h1>
+      <p class="section-subtitle">Explore the best AI tools and custom utilities built for creators and developers.</p>
+
+      <!-- 🔍 Search & Filter -->
+      <div class="tools-filter">
+        <input type="text" id="searchInput" placeholder="Search tools...">
+        <select id="categoryFilter">
+          <option value="all">All Categories</option>
+          <option value="ai">AI Tools</option>
+          <option value="custom">Custom Tools</option>
+          <option value="image">Image Tools</option>
+          <option value="text">Text Tools</option>
+        </select>
+      </div>
+
+      <!-- 🧰 Tools Grid -->
+      <div class="tools-grid" id="toolsGrid">
+        <!-- AI Tools -->
+        <div class="tool-card" data-category="ai">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712108.png" alt="ChatGPT">
+          <h3>ChatGPT</h3>
+          <p>AI-powered chatbot for text generation, coding, and conversation.</p>
+          <a href="https://chat.openai.com" target="_blank" class="btn">Try Now</a>
+        </div>
+
+        <div class="tool-card" data-category="image">
+          <img src="https://cdn-icons-png.flaticon.com/512/6819/6819583.png" alt="Midjourney">
+          <h3>Midjourney</h3>
+          <p>Generate stunning AI-based images with creative prompts.</p>
+          <a href="https://www.midjourney.com" target="_blank" class="btn">Try Now</a>
+        </div>
+
+        <div class="tool-card" data-category="ai">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Canva AI">
+          <h3>Canva AI</h3>
+          <p>Design professional visuals quickly using AI assistance.</p>
+          <a href="https://www.canva.com/ai" target="_blank" class="btn">Try Now</a>
+        </div>
+
+        <div class="tool-card" data-category="ai">
+          <img src="https://cdn-icons-png.flaticon.com/512/1162/1162456.png" alt="Runway ML">
+          <h3>Runway ML</h3>
+          <p>Powerful AI platform for creative video and image editing.</p>
+          <a href="https://runwayml.com" target="_blank" class="btn">Try Now</a>
+        </div>
+
+        <!-- Custom Tools -->
+        <div class="tool-card" data-category="custom">
+          <i class="fa-solid fa-pen-to-square tool-icon"></i>
+          <h3>Prompt Generator</h3>
+          <p>Generate creative and optimized prompts for AI tools.</p>
+          <a href="#" class="btn">Open Tool</a>
+        </div>
+
+        <div class="tool-card" data-category="custom text">
+          <i class="fa-solid fa-heading tool-icon"></i>
+          <h3>AI Title Maker</h3>
+          <p>Generate catchy titles for YouTube, blogs, and articles instantly.</p>
+          <a href="#" class="btn">Open Tool</a>
+        </div>
+
+        <div class="tool-card" data-category="custom text">
+          <i class="fa-solid fa-hashtag tool-icon"></i>
+          <h3>Hashtag Generator</h3>
+          <p>Create powerful hashtags that boost your content reach.</p>
+          <a href="#" class="btn">Open Tool</a>
+        </div>
+      </div>
+    </div>
+  </section>
+<main class="tools-page">
+
+  <!-- 🌟 Hero Section -->
+  <section class="tools-hero">
+    <div class="hero-content">
+      <h1>Explore the Best <span>AI Tools</span></h1>
+      <p>Discover and use the most powerful AI tools for writing, designing, coding, and creativity.</p>
+      <a href="#tools" class="btn-main">Explore Tools</a>
+    </div>
+  </section>
+
+  <!-- 🧭 Categories Section -->
+  <section class="tool-categories container">
+    <h2 class="section-title">Browse by Category</h2>
+    <div class="categories-grid">
+      <div class="category-box"><i class="fa-solid fa-pen-nib"></i><h4>Writing</h4></div>
+      <div class="category-box"><i class="fa-solid fa-image"></i><h4>Image Generation</h4></div>
+      <div class="category-box"><i class="fa-solid fa-robot"></i><h4>Chatbots</h4></div>
+      <div class="category-box"><i class="fa-solid fa-code"></i><h4>Coding</h4></div>
+      <div class="category-box"><i class="fa-solid fa-microphone"></i><h4>Voice AI</h4></div>
+      <div class="category-box"><i class="fa-solid fa-video"></i><h4>Video Tools</h4></div>
+    </div>
+  </section>
+
+  <!-- 🧰 Tools Grid Section -->
+  <section id="tools" class="ai-tools container">
+    <h2 class="section-title">Popular AI Tools</h2>
+    <div class="tools-grid">
+      
+      <!-- Tool Card -->
+      <div class="tool-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMdM9MEQ0ExL1PmInT3U5I8v63YXBEdoIT0Q&s" alt="ChatGPT">
+        <div class="tool-info">
+          <h3>ChatGPT</h3>
+          <p>Advanced AI chatbot for conversation, coding, and writing.</p>
+          <a href="https://chat.openai.com" class="btn-learn" target="_blank">Try Now</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <img src="https://avatars.githubusercontent.com/u/61396273?s=280&v=4" alt="Midjourney">
+        <div class="tool-info">
+          <h3>Midjourney</h3>
+          <p>Generate stunning images from your imagination using AI.</p>
+          <a href="https://www.midjourney.com" class="btn-learn" target="_blank">Try Now</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <img src="https://replacehumans.ai/wp-content/uploads/2025/01/Untitled-design-2025-01-28T101702.381.png" alt="Canva AI">
+        <div class="tool-info">
+          <h3>Canva AI</h3>
+          <p>Design faster with AI-powered templates and editing tools.</p>
+          <a href="https://www.canva.com" class="btn-learn" target="_blank">Try Now</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <img src="https://docubase.mit.edu/wp-content/uploads/2020/04/runway-logo-420x420.png" alt="Runway ML">
+        <div class="tool-info">
+          <h3>Runway ML</h3>
+          <p>Create and edit videos using next-gen AI editing technology.</p>
+          <a href="https://runwayml.com" class="btn-learn" target="_blank">Try Now</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhJedbIq_sak5t6NzY9sVyvYUDV8haKtqd3g&s" alt="GitHub Copilot">
+        <div class="tool-info">
+          <h3>GitHub Copilot</h3>
+          <p>AI coding assistant that helps write code faster and smarter.</p>
+          <a href="https://github.com/features/copilot" class="btn-learn" target="_blank">Try Now</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <img src="https://cdn.prod.website-files.com/657639ebfb91510f45654149/67cef0f6ac4fe688755e2fb7_667f481c82c31cfc88730e6b_AD_4nXeob58qSPf74x7zBtlB8jEWba-C_uLyJkLBl2CUtEA5tkfDXzrqzQNZekKVu9YzLwLJu0C8iBN_SHP6ukecJXe9CpCSKuOLOt53Ah6kqZLLnCK3q3LKHHz3FS6xMUj9rZS2su4NsgZ6JehpCdvQvVh1ssbt.webp" alt="ElevenLabs">
+        <div class="tool-info">
+          <h3>ElevenLabs</h3>
+          <p>Realistic voice generation and cloning using advanced AI.</p>
+          <a href="https://elevenlabs.io" class="btn-learn" target="_blank">Try Now</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🌈 Highlights Section -->
+  <section class="features-section">
+    <div class="container features-grid">
+      <div class="feature">
+        <i class="fa-solid fa-lightbulb"></i>
+        <h3>Creative Power</h3>
+        <p>Unleash your imagination with the latest AI tools for innovation.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Fast & Smart</h3>
+        <p>Use AI to work faster and get smarter suggestions and results.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h3>Trusted Sources</h3>
+        <p>All tools listed are reliable and trusted by millions worldwide.</p>
+      </div>
+    </div>
+  </section>
+<section class="ai-universe">
+  <div class="ai-universe-overlay"></div>
+  <div class="universe-content animate-on-scroll">
+    <h2>Welcome to the <span>AI Universe</span></h2>
+    <p>Experience the next generation of artificial intelligence innovation and creativity.</p>
+    <a href="#" class="universe-btn">Explore Now</a>
+  </div>
+  <div class="floating-orbs">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</section>
+
+  <!-- 🚀 Call to Action
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Start Exploring AI Tools Now</h2>
+      <p>Find the perfect tool for your next creative or coding project.</p>
+      <a href="#tools" class="btn-main">Discover Now</a>
+    </div>
+  </section> -->
+<section class="nextgen-tools">
+  <h2 class="animate-on-scroll">⚡ Next-Gen <span>AI Tools</span></h2>
+  <p class="tools-intro animate-on-scroll">Experience tools no one has ever imagined before — created for tomorrow’s innovators.</p>
+
+  <div class="tools-grid">
+    <div class="tool-card animate-on-scroll">
+      <i class="fa-solid fa-brain"></i>
+      <h3>MindSketch AI</h3>
+      <p>Draw ideas directly from your thoughts — this AI reads your mindwaves (via webcam) and sketches your imagination in real time.</p>
+      <a href="#" class="tool-btn">Access Beta</a>
+    </div>
+
+    <div class="tool-card animate-on-scroll">
+      <i class="fa-solid fa-language"></i>
+      <h3>DreamVoice</h3>
+      <p>Generate voiceovers that change tone based on the emotion of your script — not just words, but feelings brought to sound.</p>
+      <a href="#" class="tool-btn">Try Now</a>
+    </div>
+
+    <div class="tool-card animate-on-scroll">
+      <i class="fa-solid fa-robot"></i>
+      <h3>AI Persona Builder</h3>
+      <p>Create digital personalities that evolve over time. They remember, learn, and adapt to your interactions like real people.</p>
+      <a href="#" class="tool-btn">Build Persona</a>
+    </div>
+
+    <div class="tool-card animate-on-scroll">
+      <i class="fa-solid fa-vr-cardboard"></i>
+      <h3>RealityMorph</h3>
+      <p>Turn any image into an interactive 3D hologram experience right in your browser — no VR headset needed.</p>
+      <a href="#" class="tool-btn">Explore 3D</a>
+    </div>
+  </div>
+</section>
+<section class="future-tools">
+  <h2 class="animate-on-scroll">🚀 Coming in <span>2026</span> — The Future of AI</h2>
+  <p class="future-intro animate-on-scroll">Next-generation AI tools that are shaping the future — not yet released, but already making headlines.</p>
+
+  <div class="future-grid">
+    <div class="future-card animate-on-scroll">
+      <i class="fa-solid fa-photo-film"></i>
+      <h3>Runway Gen-3</h3>
+      <p>Next-level video generation AI that creates entire cinematic scenes from text — coming soon in 2026.</p>
+      <span class="coming-soon">Coming Soon</span>
+    </div>
+
+    <div class="future-card animate-on-scroll">
+      <i class="fa-solid fa-paintbrush"></i>
+      <h3>Midjourney v7</h3>
+      <p>Hyper-realistic art generation with full 3D object awareness and real-time lighting — no prompt errors anymore.</p>
+      <span class="coming-soon">2026 Preview</span>
+    </div>
+
+    <div class="future-card animate-on-scroll">
+      <i class="fa-solid fa-microchip"></i>
+      <h3>OpenAI Sora 2</h3>
+      <p>The next evolution of AI video — combining text, sound, and motion generation into one real-time model.</p>
+      <span class="coming-soon">Beta Access Soon</span>
+    </div>
+
+    <div class="future-card animate-on-scroll">
+      <i class="fa-solid fa-laptop-code"></i>
+      <h3>Google Gemini Ultra</h3>
+      <p>Google’s multimodal AI that thinks, speaks, and codes like a human — an upgrade from Gemini 1.5 Pro.</p>
+      <span class="coming-soon">2026 Launch</span>
+    </div>
+
+    <div class="future-card animate-on-scroll">
+      <i class="fa-solid fa-brain"></i>
+      <h3>Anthropic Claude 3.5 Vision</h3>
+      <p>Understand text, images, and videos seamlessly — the first truly “visual-thinking” AI assistant.</p>
+      <span class="coming-soon">Next Year</span>
+    </div>
+
+    <div class="future-card animate-on-scroll">
+      <i class="fa-solid fa-vr-cardboard"></i>
+      <h3>Meta AI Reality Studio</h3>
+      <p>Build virtual environments instantly using AI — type a place, and step into it in VR or AR.</p>
+      <span class="coming-soon">Future Tech</span>
+    </div>
+  </div>
+</section>
+<section class="ai-cta-section">
+  <div class="cta-content animate-on-scroll">
+    <h2>Ready to Step Into the <span>Future of AI?</span></h2>
+    <p>Join the innovators exploring tools that redefine creativity and intelligence.</p>
+    <a href="contact.html" class="cta-button">Join the Revolution</a>
+  </div>
+</section>
+
+</main>
+
+  <!-- Footer Placeholder -->
+  <div id="footer"></div>
+
+  <!-- ✅ Scripts -->
+  <script src="JS/jquery-3.7.1.min.js"></script>
+  <script src="JS/bootstrap.bundle.js"></script>
+  <script>
+    // Load Navbar & Footer
+    $(function() {
+      $("#header").load("navbar.html");
+      $("#footer").load("footer.html");
+    });
+
+    // 🔍 Tool Filtering
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const toolCards = document.querySelectorAll(".tool-card");
+
+    function filterTools() {
+      const search = searchInput.value.toLowerCase();
+      const category = categoryFilter.value;
+
+      toolCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const matchCategory = category === "all" || card.dataset.category.includes(category);
+        const matchText = text.includes(search);
+
+        card.style.display = (matchCategory && matchText) ? "flex" : "none";
+      });
+    }
+
+    searchInput.addEventListener("input", filterTools);
+    categoryFilter.addEventListener("change", filterTools);
+  </script>
+        <script src="JS/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | AIPromptsByDB</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div id="header"></div>
+
+  <!-- ====== CONTACT SECTION ====== -->
+  <section class="contact-section">
+    <div class="contact-container">
+
+      <div class="contact-info">
+        <h2><i class="fa-solid fa-envelope"></i> Get in Touch</h2>
+        <p>We’d love to hear from you! Whether you have questions, feedback, or partnership ideas — drop us a message below.</p>
+
+        <div class="info-box">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <h4>Office Address</h4>
+            <p>Karachi, Pakistan</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <div>
+            <h4>Email Us</h4>
+            <p><a href="mailto:contact@aipromptsbydb.com">contact@aipromptsbydb.com</a></p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <i class="fa-solid fa-phone"></i>
+          <div>
+            <h4>Call Us</h4>
+            <p>+92 300 1234567</p>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <form action="https://formspree.io/f/mayourformid" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required />
+          </div>
+          <div class="form-group">
+            <input type="text" name="subject" placeholder="Subject" />
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="5" placeholder="Write your message..." required></textarea>
+          </div>
+          <button type="submit" class="btn contact-btn">Send Message</button>
+        </form>
+        <small class="error-message"></small>
+        <p id="formSuccess" class="success-message"></p>
+
+      </div>
+
+    </div>
+  </section>
+<!-- ====== AI CONTACT ASSISTANT ====== -->
+<section class="ai-assistant">
+  <div class="assistant-box">
+    <div class="assistant-header">
+      <i class="fa-solid fa-robot"></i>
+      <h3>DB AI Contact Assistant</h3>
+    </div>
+
+    <div class="assistant-chat" id="chatBox">
+      <div class="bot-message">👋 Hi there! I'm your AI Assistant. How can I help you today?</div>
+    </div>
+
+    <form class="assistant-input" id="chatForm">
+      <input type="text" id="userInput" placeholder="Type your message..." required />
+      <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script src="JS/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function(){
+      $("#header").load("navbar.html");
+      $("#footer").load("footer.html");
+    });
+  </script>
+  <script src="JS/script.js"></script>
+
+</body>
+</html>

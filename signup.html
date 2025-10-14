@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup | AIPromptsByDB</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0a0f1f, #05060c);
+      font-family: "Poppins", sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 40px rgba(0, 255, 195, 0.3);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .signup-container h2 {
+      color: #00ffc3;
+      margin-bottom: 25px;
+    }
+
+    .signup-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #00ffc3, #00b8ff);
+      border: none;
+      border-radius: 8px;
+      color: black;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .signup-btn:hover {
+      opacity: 0.8;
+    }
+
+    .login-link {
+      margin-top: 15px;
+      color: #00ffc3;
+      display: block;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h2><i class="fa-solid fa-user-plus"></i> Sign Up</h2>
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button class="signup-btn" id="signupBtn">Create Account</button>
+    <a href="login.html" class="login-link">Already have an account? Log in</a>
+  </div>
+
+  <script src="JS/script.js"></script>
+  <script src="JS/jquery-3.7.1.min.js"></script>
+  <script src="JS/bootstrap.bundle.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  /* ---------------- SIGNUP ---------------- */
+  const signupBtn = document.getElementById("signupBtn");
+  if (signupBtn) {
+    signupBtn.addEventListener("click", () => {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!name || !email || !password) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      localStorage.setItem("userName", name);
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userPassword", password);
+
+      alert("Signup successful! Please login now.");
+      window.location.href = "login.html";
+    });
+  }
+
+  /* ---------------- LOGIN ---------------- */
+  const loginBtn = document.getElementById("loginBtn");
+  if (loginBtn) {
+    loginBtn.addEventListener("click", () => {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const rememberMe = document.getElementById("rememberMe")?.checked || false;
+
+      const savedEmail = localStorage.getItem("userEmail");
+      const savedPassword = localStorage.getItem("userPassword");
+
+      if (email === savedEmail && password === savedPassword) {
+        localStorage.setItem("isLoggedIn", "true");
+
+        if (rememberMe) {
+          localStorage.setItem("rememberMe", "true");
+        } else {
+          localStorage.removeItem("rememberMe");
+        }
+
+        alert("Login successful!");
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid email or password!");
+      }
+    });
+  }
+
+  /* ---------------- NAVBAR LOGIN/LOGOUT ---------------- */
+  const authButton = document.getElementById("authButton");
+  if (authButton) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+    if (isLoggedIn) {
+      authButton.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Logout';
+      authButton.href = "#";
+
+      authButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.setItem("isLoggedIn", "false");
+        alert("You have been logged out.");
+        window.location.href = "login.html";
+      });
+    } else {
+      authButton.innerHTML = '<i class="fa-solid fa-user"></i> Login';
+      authButton.href = "login.html";
+    }
+  }
+});
+
+  </script>
+</body>
+</html>

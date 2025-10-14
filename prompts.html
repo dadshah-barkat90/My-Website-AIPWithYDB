@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIPromptsByDB</title>
+
+  <!--  CSS -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+
+  <!--  Navbar Placeholder -->
+  <div id="header"></div>
+
+  <!--  Page Content -->
+  <!-- ======= PROMPT HERO SECTION ======= -->
+<section class="prompt-hero">
+  <div class="container text-center">
+    <h1><i class="fa-solid fa-robot"></i> Explore, Create & Share AI Prompts</h1>
+    <p>Discover beautiful prompts, see their results, and craft your own with our prompt generator.</p>
+  </div>
+</section>
+
+<!-- ======= CATEGORY FILTER ======= -->
+<section class="prompt-categories text-center" id="for-linking-buttons">
+  <div class="container">
+    <button class="category-btn active" data-category="all"><i class="fa-solid fa-globe"></i> All</button>
+    <button class="category-btn" data-category="chatgpt"><i class="fa-solid fa-comments"></i> ChatGPT</button>
+    <button class="category-btn" data-category="midjourney"><i class="fa-solid fa-image"></i> Midjourney</button>
+    <button class="category-btn" data-category="coding"><i class="fa-solid fa-code"></i> Coding</button>
+    <button class="category-btn" data-category="business"><i class="fa-solid fa-briefcase"></i> Business</button>
+  </div>
+</section>
+
+<!-- ======= PROMPT GRID ======= -->
+<section class="prompt-gallery">
+  <div class="container">
+    <div id="promptGrid" class="row g-4"></div>
+  </div>
+</section>
+
+<!-- ======= PROMPT GENERATOR TOOL ======= -->
+<section class="prompt-generator" id="for-buttons">
+  <div class="container">
+    <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Create Your Own Prompt</h2>
+    <form id="promptBuilder">
+      <div class="form-group">
+        <label>Choose Platform:</label>
+        <select id="platformSelect" required>
+          <option value="ChatGPT">ChatGPT</option>
+          <option value="Midjourney">Midjourney</option>
+          <option value="Coding">Coding</option>
+          <option value="Marketing">Marketing</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Goal:</label>
+        <input type="text" id="goalInput" placeholder="e.g. Generate blog ideas about AI..." required />
+      </div>
+      <div class="form-group">
+        <label>Tone / Style:</label>
+        <select id="toneSelect">
+          <option value="Professional">Professional</option>
+          <option value="Funny">Funny</option>
+          <option value="Casual">Casual</option>
+          <option value="Detailed">Detailed</option>
+        </select>
+      </div>
+      <button type="submit" class="generate-btn"><i class="fa-solid fa-magic"></i> Generate Prompt</button>
+    </form>
+
+    <div class="generated-output">
+      <h3>Generated Prompt Preview</h3>
+      <pre id="generatedPrompt"></pre>
+      <button id="copyGenerated" class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PROMPT WRITING TIPS ======= -->
+<section class="prompt-tips">
+  <div class="container">
+    <h2><i class="fa-solid fa-lightbulb"></i> Tips for Writing Powerful Prompts</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><i class="fa-solid fa-user-pen"></i><h4>Be Specific</h4><p>Describe what you want clearly. Mention details like tone, format, and audience.</p></div>
+      <div class="tip-card"><i class="fa-solid fa-palette"></i><h4>Add Style</h4><p>Use adjectives and styles to guide the AI toward your vision.</p></div>
+      <div class="tip-card"><i class="fa-solid fa-clipboard-list"></i><h4>Set a Role</h4><p>Start with “Act as a teacher” or “Act as a designer” to get better output.</p></div>
+      <div class="tip-card"><i class="fa-solid fa-clock"></i><h4>Iterate</h4><p>Refine your prompt, tweak parts, and experiment for best results.</p></div>
+    </div>
+  </div>
+</section>
+
+
+  <!--  Footer Placeholder -->
+  <div id="footer"></div>
+
+  <!--  Scripts -->
+  <script src="JS/jquery-3.7.1.min.js"></script>
+    <script src="JS/bootstrap.bundle.js"></script>
+
+  <script>
+    // Load Navbar and Footer using jQuery
+    $(function() {
+      $("#header").load("navbar.html");
+      $("#footer").load("footer.html");
+    });
+
+    // ===== PROMPT PAGE SCRIPT =====
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ===== Elements =====
+  const promptGrid = document.getElementById("promptGrid");
+  const categoryButtons = document.querySelectorAll(".category-btn");
+  const form = document.getElementById("promptBuilder");
+  const output = document.getElementById("generatedPrompt");
+  const copyGenerated = document.getElementById("copyGenerated");
+
+  if (!promptGrid) return; // Exit if grid not found
+
+  // ===== PROMPTS DATABASE =====
+  const prompts = [
+    // --- MIDJOURNEY ---
+    {
+      title: "Futuristic AI Portrait",
+      desc: "Create a stunning futuristic face artwork using AI.",
+      category: "midjourney",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
+      text: "Generate a futuristic portrait of an AI humanoid with glowing blue eyes and cyberpunk lighting."
+    },
+    {
+      title: "Abstract Neon Design",
+      desc: "Generate a colorful, glowing abstract pattern.",
+      category: "midjourney",
+      image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=800&q=80",
+      text: "Create an abstract neon pattern with geometric shapes and vivid light reflections in 4K."
+    },
+
+    // --- CHATGPT ---
+    {
+      title: "AI Blog Writer",
+      desc: "Write SEO-optimized blog content using ChatGPT.",
+      category: "chatgpt",
+      image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80",
+      text: "Write a 1000-word SEO-friendly blog post about how AI is changing education systems globally."
+    },
+    {
+      title: "Social Media Caption Writer",
+      desc: "Generate creative captions for Instagram or Twitter.",
+      category: "chatgpt",
+      image: "https://images.unsplash.com/photo-1554774853-b414d2a2b4d2?auto=format&fit=crop&w=800&q=80",
+      text: "Write 10 catchy Instagram captions about motivation and productivity for a personal brand page."
+    },
+
+    // --- CODING ---
+    {
+      title: "Portfolio Website Prompt",
+      desc: "Generate a full HTML/CSS/JS portfolio layout.",
+      category: "coding",
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+      text: "Build a responsive developer portfolio website using HTML, CSS, and JavaScript with smooth animations."
+    },
+    {
+      title: "JavaScript App Idea Generator",
+      desc: "Generate coding project ideas for learning.",
+      category: "coding",
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      text: "Suggest 5 beginner-friendly JavaScript app ideas with step-by-step guidance for each."
+    },
+
+    // --- BUSINESS ---
+    {
+      title: "Startup Pitch Deck Writer",
+      desc: "Create a perfect startup pitch deck outline.",
+      category: "business",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+      text: "Write a 10-slide pitch deck structure for a tech startup focusing on AI-based healthcare solutions."
+    },
+    {
+      title: "Marketing Ad Copy Generator",
+      desc: "Craft catchy ad copy for products or services.",
+      category: "business",
+      image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=800&q=80",
+      text: "Write 3 versions of high-converting ad copy for a digital marketing course with a friendly tone."
+    },
+
+    // --- GENERAL / FEATURED ---
+    {
+      title: "AI Brainstorm Assistant",
+      desc: "Generate creative ideas for any topic or task.",
+      category: "chatgpt",
+      image: "https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=800&q=80",
+      text: "Act as a brainstorming partner. Give 10 innovative content ideas for AI-related YouTube videos."
+    },
+    {
+      title: "AI Art & Business Fusion",
+      desc: "Combine art and marketing in one creative idea.",
+      category: "business",
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      text: "Generate 5 unique ways to use AI-generated art for brand marketing and social media campaigns."
+    }
+  ];
+
+  // ===== RENDER PROMPTS =====
+  function renderPrompts(filter = "all") {
+    promptGrid.innerHTML = "";
+    const filtered = filter === "all" ? prompts : prompts.filter(p => p.category === filter);
+
+    if (filtered.length === 0) {
+      promptGrid.innerHTML = `<p class="text-center text-muted">No prompts found for this category.</p>`;
+      return;
+    }
+
+    filtered.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "col-md-4";
+      card.innerHTML = `
+        <div class="prompt-card shadow-sm">
+          <img src="${p.image}" alt="${p.title}">
+          <div class="prompt-info">
+            <h4>${p.title}</h4>
+            <p>${p.desc}</p>
+            <p class="category-badge"><i class="fa-solid fa-tag"></i> ${p.category}</p>
+            <pre>${p.text}</pre>
+            <button class="copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+        </div>`;
+      
+      // Copy prompt text
+      const copyBtn = card.querySelector(".copy-btn");
+      if (copyBtn && navigator.clipboard) {
+        copyBtn.addEventListener("click", () => {
+          navigator.clipboard.writeText(p.text)
+            .then(() => alert("✅ Prompt copied!"))
+            .catch(() => alert("⚠️ Copy failed — try HTTPS or localhost."));
+        });
+      }
+
+      promptGrid.appendChild(card);
+    });
+  }
+
+  renderPrompts(); // Initial render
+
+  // ===== CATEGORY FILTER =====
+  categoryButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelector(".category-btn.active")?.classList.remove("active");
+      btn.classList.add("active");
+      renderPrompts(btn.dataset.category);
+    });
+  });
+
+  // ===== PROMPT GENERATOR TOOL =====
+  if (form && output) {
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const platform = document.getElementById("platformSelect").value || "AI";
+      const goal = document.getElementById("goalInput").value || "";
+      const tone = document.getElementById("toneSelect").value || "Professional";
+
+      const generated = `Act as a ${platform} expert. ${goal}. Use a ${tone.toLowerCase()} tone.`;
+      output.textContent = generated;
+    });
+  }
+
+  if (copyGenerated && navigator.clipboard) {
+    copyGenerated.addEventListener("click", () => {
+      const text = output.textContent;
+      if (!text) return alert("⚠️ Nothing to copy!");
+      navigator.clipboard.writeText(text)
+        .then(() => alert("✅ Prompt copied to clipboard!"))
+        .catch(() => alert("⚠️ Copy failed — try HTTPS or localhost."));
+    });
+  }
+
+});
+
+  </script>
+   <script src="JS/script.js"></script>
+
+</body>
+</html>
