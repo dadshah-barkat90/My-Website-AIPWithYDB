@@ -293,7 +293,7 @@ document.addEventListener("click", (e) => {
         const div = document.createElement("div");
         div.className = "testimonial-card";
         div.innerHTML = `
-          <img src="https://i.pravatar.cc/100?u=${encodeURIComponent(r.name)}" alt="${escapeHtml(r.name)}">
+          <img src="=${encodeURIComponent(r.name)}" alt="${escapeHtml(r.name)}">
           <h3>${escapeHtml(r.name)}</h3>
           <span>${escapeHtml(r.role)}</span>
           <p>"${escapeHtml(r.message)}"</p>
@@ -762,6 +762,53 @@ document.addEventListener("DOMContentLoaded", () => {
       successMsg.style.display = "none";
     }
   }
+});
+// Wait for footer to load dynamically first
+// ✅ Newsletter form works across all pages (even with dynamic footer)
+$(document).on("submit", "#footerNewsletterForm", function (e) {
+  e.preventDefault();
+
+  const emailInput = document.getElementById("footerEmail");
+  const email = emailInput.value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!email) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops!",
+      text: "Please enter your email before subscribing.",
+      confirmButtonColor: "#00ffc3",
+      background: "#0a0f1f",
+      color: "#fff"
+    });
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    Swal.fire({
+      icon: "warning",
+      title: "Invalid Email",
+      text: "Please enter a valid email address.",
+      confirmButtonColor: "#00ffc3",
+      background: "#0a0f1f",
+      color: "#fff"
+    });
+    return;
+  }
+
+  // Optional: Simulate sending email
+  setTimeout(() => {
+    Swal.fire({
+      icon: "success",
+      title: "You're Subscribed! 🎉",
+      text: "Thank you for joining our newsletter. Stay tuned for AI updates!",
+      confirmButtonText: "Awesome!",
+      confirmButtonColor: "#00ffc3",
+      background: "#0a0f1f",
+      color: "#fff"
+    });
+    emailInput.value = "";
+  }, 500);
 });
 
 /* ============================
