@@ -1203,6 +1203,17 @@ button.next:hover {
     font-size: 0.85rem;
   }
 }
+@media (max-width: 768px) {
+  #footerNewsletterForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #footerNewsletterForm input,
+  #footerNewsletterForm button {
+    width: 100%;
+  }
+}
 .footer {
   background: rgba(15, 15, 30, 0.9);
   backdrop-filter: blur(12px);
